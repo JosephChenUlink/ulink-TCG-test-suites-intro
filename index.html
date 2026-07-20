@@ -505,16 +505,34 @@
     const q = document.getElementById('q');
     const focus = document.getElementById('focus');
     const cards = Array.from(document.querySelectorAll('#suiteGrid .suite'));
+    const tableRows = Array.from(document.querySelectorAll('table tbody tr'));
 
     function apply(){
       const term = (q.value || '').trim().toLowerCase();
       const f = focus.value;
 
+      // 1. Filter Cards
       cards.forEach(card => {
         const matchesFocus = (f === 'all') || (card.dataset.focus === f);
         const hay = (card.innerText + ' ' + (card.dataset.keywords || '')).toLowerCase();
         const matchesText = !term || hay.includes(term);
         card.style.display = (matchesFocus && matchesText) ? '' : 'none';
+      });
+
+      // 2. Filter Table Rows synchronously
+      tableRows.forEach(row => {
+        const focusText = row.cells[1].innerText.toLowerCase();
+        const fullText = row.innerText.toLowerCase();
+
+        let rowFocusType = '';
+        if (focusText.includes('certification')) rowFocusType = 'cert';
+        else if (focusText.includes('protocol')) rowFocusType = 'protocol';
+        else if (focusText.includes('application note')) rowFocusType = 'appnote';
+
+        const matchesFocus = (f === 'all') || (rowFocusType === f);
+        const matchesText = !term || fullText.includes(term);
+
+        row.style.display = (matchesFocus && matchesText) ? '' : 'none';
       });
     }
 

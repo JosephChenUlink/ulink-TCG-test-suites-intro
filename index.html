@@ -112,23 +112,38 @@
       border-radius: 999px;
     }
 
-    .tableWrap{margin-top: 18px; overflow:auto; border-radius: var(--radius); border:1px solid var(--border); box-shadow: var(--shadow)}
-    table{width:100%; border-collapse: collapse; min-width: 1180px; background: rgba(255,255,255,.03)}
+    .tableWrap{
+      margin-top: 18px; 
+      overflow: hidden; 
+      border-radius: var(--radius); 
+      border:1px solid var(--border); 
+      box-shadow: var(--shadow);
+    }
+    table{
+      width:100%; 
+      border-collapse: collapse; 
+      min-width: 100%; 
+      table-layout: fixed; 
+      background: rgba(255,255,255,.03);
+    }
     thead th{
       position: sticky; top: 0;
       background: rgba(17,26,51,.92);
       backdrop-filter: blur(8px);
       text-align:left;
-      padding: 12px 14px;
+      padding: 12px 10px;
       font-size: 13px;
       color: var(--muted);
       border-bottom: 1px solid var(--border);
+      word-wrap: break-word;
     }
     tbody td{
-      padding: 12px 14px;
+      padding: 12px 10px;
       border-bottom: 1px solid rgba(255,255,255,.07);
       vertical-align: top;
       color: var(--text);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
     tbody tr:hover{background: rgba(122,162,255,.08)}
     .small{color: var(--muted); font-size: 13px}
@@ -397,6 +412,14 @@
           <caption id="tableDesc" style="caption-side: bottom; padding: 10px 14px; color: var(--muted); text-align:left;">
             Notes: This is a marketing-friendly summary. For exact requirements, supported options, and minimum tool versions, refer to the licensed ULINK user guides.
           </caption>
+          <colgroup>
+            <col style="width: 18%;">
+            <col style="width: 12%;">
+            <col style="width: 18%;">
+            <col style="width: 20%;">
+            <col style="width: 20%;">
+            <col style="width: 12%;">
+          </colgroup>
           <thead>
             <tr>
               <th>Suite</th>
@@ -413,7 +436,7 @@
               <td>Certification</td>
               <td>Opal-family TCG storage devices</td>
               <td>
-                <ul class="small" style="margin:0; padding-left: 18px;">
+                <ul class="small" style="margin:0; padding-left: 14px;">
                   <li>TCG Storage Opal Family Test Cases Spec v1.02 r1.00</li>
                 </ul>
               </td>
@@ -425,7 +448,7 @@
               <td>Protocol</td>
               <td>Enterprise SSC devices</td>
               <td>
-                <ul class="small" style="margin:0; padding-left: 18px;">
+                <ul class="small" style="margin:0; padding-left: 14px;">
                   <li>TCG Storage SSC: Enterprise v1.01</li>
                 </ul>
               </td>
@@ -437,7 +460,7 @@
               <td>Protocol</td>
               <td>Opal-family devices + IEEE 1667 host-attachment coverage</td>
               <td>
-                <ul class="small" style="margin:0; padding-left: 18px;">
+                <ul class="small" style="margin:0; padding-left: 14px;">
                   <li>TCG Opal Test Cases Spec v1.00</li>
                   <li>IEEE P1667 (Draft Standard) host attachment</li>
                 </ul>
@@ -450,7 +473,7 @@
               <td>Protocol</td>
               <td>Opal devices supporting configurable locking for NVMe namespaces / SCSI LUNs</td>
               <td>
-                <ul class="small" style="margin:0; padding-left: 18px;">
+                <ul class="small" style="margin:0; padding-left: 14px;">
                   <li>Opal SSC Feature Set: Configurable Locking for NVMe Namespaces &amp; SCSI LUNs v1.01 r1.00</li>
                   <li>TCG Storage Application Note: Configurable Namespace Locking Examples v1.00 r1.00</li>
                   <li>Opal Family Feature Set: Shadow MBR for Multiple Namespaces v1.00 r1.21</li>
@@ -464,7 +487,7 @@
               <td>Application Note</td>
               <td>Opal SSC–compliant SEDs</td>
               <td>
-                <ul class="small" style="margin:0; padding-left: 18px;">
+                <ul class="small" style="margin:0; padding-left: 14px;">
                   <li>TCG App Note: Encrypting Drives Compliant with Opal SSC v1.00</li>
                 </ul>
               </td>
@@ -476,7 +499,7 @@
               <td>Application Note</td>
               <td>Enterprise SSC–compliant SEDs</td>
               <td>
-                <ul class="small" style="margin:0; padding-left: 18px;">
+                <ul class="small" style="margin:0; padding-left: 14px;">
                   <li>TCG App Note: Encrypting Drive Compliant with Enterprise SSC v1.00</li>
                 </ul>
               </td>

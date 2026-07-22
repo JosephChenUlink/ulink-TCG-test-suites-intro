@@ -3,22 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ULINK TCG Test Suites</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237aa2ff'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='65' fill='%230b1020'>U</text></svg>">
+  <title>ULINK TCG Test Suites (Light Blue Theme)</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232563eb'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='65' fill='%23ffffff'>U</text></svg>">
   <style>
     :root{
-      --bg:#0b1020;
-      --panel:#111a33;
-      --panel2:#0f1730;
-      --text:#e7ecff;
-      --muted:#b8c0e6;
-      --accent:#7aa2ff;
-      --accent2:#48d1cc;
-      --border:rgba(255,255,255,.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
+      --bg:#f0f6ff;
+      --panel:#ffffff;
+      --text:#1e293b;
+      --muted:#64748b;
+      --accent:#2563eb;
+      --accent-light:#dbeafe;
+      --border:#cbd5e1;
+      --shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
+      --radius: 16px;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
     *{box-sizing:border-box}
     body{
@@ -26,17 +25,17 @@
       font-family:var(--sans);
       color:var(--text);
       background:
-        radial-gradient(900px 600px at 10% -10%, rgba(122,162,255,.35), transparent 60%),
-        radial-gradient(900px 600px at 90% 10%, rgba(72,209,204,.25), transparent 55%),
-        linear-gradient(180deg, var(--bg), #070a14);
-      line-height:1.55;
+        radial-gradient(1000px 600px at 10% -10%, #dbeafe, transparent 70%),
+        radial-gradient(1000px 600px at 90% 10%, #e0f2fe, transparent 65%),
+        linear-gradient(180deg, var(--bg), #e2e8f0);
+      line-height:1.6;
     }
-    a{color:var(--accent); text-decoration:none}
+    a{color:var(--accent); text-decoration:none; font-weight:500;}
     a:hover{text-decoration:underline}
-    .wrap{max-width:1100px; margin:0 auto; padding: 28px 18px 70px;}
+    .wrap{max-width:1140px; margin:0 auto; padding: 28px 20px 70px;}
 
     header{ 
-      padding: 20px 0 18px; 
+      padding: 20px 0 24px; 
       display: flex;
       flex-direction: column;
     }
@@ -48,10 +47,10 @@
     }
     .theme-switcher {
       display: inline-flex; 
-      background: rgba(255,255,255,.08); 
+      background: #e2e8f0; 
       padding: 4px; 
       border-radius: 999px; 
-      border: 1px solid var(--border);
+      border: 1px solid #cbd5e1;
     }
     .theme-switcher a, .theme-switcher span {
       padding: 5px 14px; 
@@ -60,138 +59,143 @@
       font-weight: 600;
     }
     .theme-btn-active {
-      background: var(--accent); 
-      color: #0b1020 !important;
+      background: #2563eb; 
+      color: #ffffff !important;
     }
     .theme-btn-inactive {
-      color: var(--muted) !important;
+      color: #64748b !important;
     }
     .theme-btn-inactive:hover {
-      color: var(--text) !important;
+      color: #1e293b !important;
       text-decoration: none;
     }
     .badge{
       display:inline-flex; align-items:center; gap:10px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      padding: 8px 14px;
+      border:1px solid #bfdbfe;
+      background: #ffffff;
+      padding: 6px 14px;
       border-radius: 999px;
       font-size: 13px;
       color: var(--muted);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     }
-    .dot{width:9px; height:9px; border-radius:50%; background: var(--accent2); box-shadow: 0 0 0 6px rgba(72,209,204,.12)}
+    .dot{width:9px; height:9px; border-radius:50%; background: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,0.15)}
     h1{
-      margin: 10px 0 10px;
-      font-size: clamp(30px, 4vw, 44px);
-      letter-spacing: -0.02em;
+      margin: 12px 0 10px;
+      font-size: clamp(32px, 4vw, 44px);
+      letter-spacing: -0.025em;
+      color: #0f172a;
       line-height:1.15;
     }
-    .sub{ margin:0; color: var(--muted); font-size: 16px; max-width: 78ch; }
+    .sub{ margin:0; color: var(--muted); font-size: 16.5px; max-width: 80ch; }
 
     .grid{
       display:grid;
       grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      margin-top: 18px;
+      gap: 18px;
+      margin-top: 20px;
     }
     @media (max-width: 880px){ .grid{grid-template-columns: 1fr} }
 
     .card{
-      border:1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid #e2e8f0;
+      background: var(--panel);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
     .card .hd{
-      padding: 16px 18px;
-      background: linear-gradient(180deg, rgba(122,162,255,.18), transparent);
-      border-bottom: 1px solid var(--border);
+      padding: 18px 20px;
+      background: linear-gradient(180deg, #eff6ff, #ffffff);
+      border-bottom: 1px solid #e2e8f0;
       display:flex;
       justify-content:space-between;
       align-items:flex-start;
       gap: 12px;
     }
-    .card .bd{padding: 16px 18px;}
-    .kicker{color: var(--muted); font-size: 13px; letter-spacing: .08em; text-transform: uppercase}
-    .title{margin: 6px 0 0; font-size: 18px;}
+    .card .bd{padding: 20px;}
+    .kicker{color: var(--accent); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; font-weight: 700;}
+    .title{margin: 4px 0 0; font-size: 18px; color: #0f172a;}
     .pillrow{display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end}
     .pill{
       font-size: 12px;
-      color: var(--muted);
-      border: 1px solid var(--border);
-      background: rgba(0,0,0,.15);
-      padding: 6px 10px;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      padding: 4px 10px;
       border-radius: 999px;
       white-space:nowrap;
+      font-weight: 500;
     }
 
     .suiteGrid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
+      gap: 16px;
+      margin-top: 18px;
     }
     @media (max-width: 760px){ .suiteGrid{grid-template-columns: 1fr} }
 
-    .suite h3{margin:0; font-size: 18px}
-    .suite p{margin: 10px 0 0; color: var(--muted)}
-    .meta{ margin-top: 12px; display:flex; flex-wrap:wrap; gap: 8px; }
+    .suite h3{margin:0; font-size: 18px; color:#0f172a;}
+    .suite p{margin: 10px 0 0; color: var(--muted); font-size:14.5px;}
+    .meta{ margin-top: 14px; display:flex; flex-wrap:wrap; gap: 8px; }
     .meta code{
       font-family: var(--mono);
       font-size: 12px;
-      color: #dfe7ff;
-      background: rgba(0,0,0,.22);
-      border: 1px solid var(--border);
-      padding: 6px 10px;
+      color: #1e3a8a;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      padding: 5px 10px;
       border-radius: 999px;
     }
 
     .tableWrap{
-      margin-top: 18px; 
+      margin-top: 20px; 
       overflow: hidden; 
       border-radius: var(--radius); 
-      border:1px solid var(--border); 
+      border:1px solid #cbd5e1; 
       box-shadow: var(--shadow);
+      background: var(--panel);
     }
     table{
       width:100%; 
       border-collapse: collapse; 
       min-width: 100%; 
       table-layout: fixed; 
-      background: rgba(255,255,255,.03);
     }
     thead th{
       position: sticky; top: 0;
-      background: rgba(17,26,51,.92);
-      backdrop-filter: blur(8px);
+      background: #f8fafc;
       text-align:left;
-      padding: 12px 10px;
+      padding: 14px 12px;
       font-size: 13px;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      color: #334155;
+      border-bottom: 2px solid #e2e8f0;
       word-wrap: break-word;
     }
     tbody td{
-      padding: 12px 10px;
-      border-bottom: 1px solid rgba(255,255,255,.07);
+      padding: 14px 12px;
+      border-bottom: 1px solid #f1f5f9;
       vertical-align: top;
       color: var(--text);
+      font-size: 14px;
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
-    tbody tr:hover{background: rgba(122,162,255,.08)}
+    tbody tr:hover{background: #f8fafc}
     .small{color: var(--muted); font-size: 13px}
 
-    .controls{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; }
+    .controls{ display:flex; flex-wrap:wrap; gap:12px; margin-top: 20px; }
     .search{
       flex: 1 1 280px;
       display:flex; gap:10px;
       align-items:center;
-      background: rgba(0,0,0,.18);
-      border:1px solid var(--border);
+      background: #ffffff;
+      border:1px solid #cbd5e1;
       border-radius: 999px;
-      padding: 10px 14px;
+      padding: 8px 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
     .search input{
       width:100%; background: transparent; border:none; outline:none;
@@ -199,23 +203,24 @@
     }
     .select{
       flex: 0 0 auto;
-      background: rgba(0,0,0,.18);
-      border:1px solid var(--border);
+      background: #ffffff;
+      border:1px solid #cbd5e1;
       border-radius: 999px;
-      padding: 10px 14px;
+      padding: 8px 16px;
       color: var(--text);
       font-size: 14px;
       outline: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    footer{ margin-top: 26px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); padding-top: 16px; }
+    footer{ margin-top: 36px; color: var(--muted); font-size: 13px; border-top: 1px solid #cbd5e1; padding-top: 20px; }
     .note{
-      padding: 12px 14px;
-      background: rgba(72,209,204,.08);
-      border: 1px solid rgba(72,209,204,.22);
-      border-radius: 14px;
-      color: #d6fffb;
-      font-size: 13px;
+      padding: 12px 16px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      color: #166534;
+      font-size: 13.5px;
     }
   </style>
 </head>
@@ -224,14 +229,14 @@
     <header>
       <div class="top-bar">
         <div class="theme-switcher">
-          <span class="theme-btn-active">Dark Theme</span>
-          <a href="light.html" class="theme-btn-inactive">Light Blue Theme ➔</a>
+          <a href="index.html" class="theme-btn-inactive">➔ Dark Theme</a>
+          <span class="theme-btn-active">Light Blue Theme</span>
         </div>
 
         <div class="badge">
           <span class="dot"></span>
           <span>ULINK • TCG Test Suites Introduction</span>
-          <span style="border-left: 1px solid var(--border); padding-left: 8px; margin-left: 4px; color: var(--accent); font-weight: 500;">v1.0.0</span>
+          <span style="border-left: 1px solid #cbd5e1; padding-left: 8px; margin-left: 4px; color: var(--accent); font-weight: 600;">v1.0.0</span>
         </div>
       </div>
 
@@ -303,8 +308,8 @@
       </div>
     </section>
 
-    <section aria-label="Suites" style="margin-top: 18px;">
-      <h2 style="margin: 0 0 8px; font-size: 22px;">Suite overview</h2>
+    <section aria-label="Suites" style="margin-top: 24px;">
+      <h2 style="margin: 0 0 8px; font-size: 22px; color:#0f172a;">Suite overview</h2>
       <p class="small" style="margin-top:0; max-width: 90ch;">
         Below is a high-level snapshot of each suite and where it fits in a validation plan. (Details vary by release.)
       </p>
@@ -450,13 +455,13 @@
       </div>
     </section>
 
-    <section aria-label="Comparison" style="margin-top: 22px;">
-      <h2 style="margin: 0 0 8px; font-size: 22px;">Compare suites</h2>
+    <section aria-label="Comparison" style="margin-top: 28px;">
+      <h2 style="margin: 0 0 8px; font-size: 22px; color:#0f172a;">Compare suites</h2>
       <p class="small" style="margin-top:0; max-width: 90ch;">Compare suites by intent (certification, protocol, or workflow validation) and device coverage.</p>
 
       <div class="tableWrap">
         <table aria-describedby="tableDesc">
-          <caption id="tableDesc" style="caption-side: bottom; padding: 10px 14px; color: var(--muted); text-align:left;">
+          <caption id="tableDesc" style="caption-side: bottom; padding: 12px 16px; color: var(--muted); text-align:left;">
             Notes: This is a marketing-friendly summary. For exact requirements, supported options, and minimum tool versions, refer to the licensed ULINK user guides.
           </caption>
           <colgroup>

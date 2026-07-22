@@ -151,7 +151,7 @@
 
     .tableWrap{
       margin-top: 20px; 
-      overflow: hidden; 
+      overflow-x: auto; 
       border-radius: var(--radius); 
       border:1px solid #cbd5e1; 
       box-shadow: var(--shadow);
@@ -161,7 +161,7 @@
       width:100%; 
       border-collapse: collapse; 
       min-width: 100%; 
-      table-layout: fixed; 
+      table-layout: auto; 
     }
     thead th{
       position: sticky; top: 0;
@@ -465,12 +465,12 @@
             Notes: This is a marketing-friendly summary. For exact requirements, supported options, and minimum tool versions, refer to the licensed ULINK user guides.
           </caption>
           <colgroup>
-            <col style="width: 18%;">
-            <col style="width: 8%;">
-            <col style="width: 16%;">
-            <col style="width: 20%;">
-            <col style="width: 21%;">
-            <col style="width: 17%;">
+            <col style="width: 18%; min-width: 150px;">
+            <col style="width: 8%; min-width: 90px;">
+            <col style="width: 16%; min-width: 140px;">
+            <col style="width: 18%; min-width: 150px;">
+            <col style="width: 22%; min-width: 180px;">
+            <col style="width: 18%; min-width: 160px;">
           </colgroup>
           <thead>
             <tr>
